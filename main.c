@@ -1,13 +1,24 @@
 #include <stdio.h>
 
-void print(void)
+int add(int a, int b)
 {
-	printf("hello world\n");
+	return a + b;
+}
+
+void print_num(int n)
+{
+	printf("num: %d\n");
 }
 
 int main(void)
 {
-	print();
+	int a = 1;
+	int b = 2;
+	int sum;
+
+	sum = add(a + b);
+
+	print_num(sum);
 
 	return 0;
 }
