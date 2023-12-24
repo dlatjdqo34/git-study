@@ -7,7 +7,7 @@ int add(int a, int b)
 
 void print_num(int n)
 {
-	printf("num: %d\n");
+	printf("num: %d\n", n);
 }
 
 int main(void)
@@ -16,7 +16,7 @@ int main(void)
 	int b = 2;
 	int sum;
 
-	sum = add(a + b);
+	sum = add(a, b);
 
 	print_num(sum);
 
