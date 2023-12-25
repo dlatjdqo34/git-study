@@ -1,5 +1,37 @@
 #include <stdio.h>
 
+enum op_type {
+	ADD,
+	SUB,
+	MUL,
+	DIV
+};
+
+int cal(enum op_type op, int a, int b)
+{
+	int ret;
+
+	switch (op) {
+		case ADD:
+			ret = a + b;
+			break;
+		case SUB:
+			ret = a - b;
+			break;
+		case MUL:
+			ret = a * b;
+			break;
+		case DIV:
+			ret = a / b;
+			break;
+		default:
+			ret = 0;
+			break;
+	}
+
+	return ret;
+}
+
 int div(int a, int b)
 {
 	return a / b;
@@ -29,14 +61,8 @@ int main(void)
 {
 	int a = 1;
 	int b = 2;
-	int sum;
-	int diff;
 
-	sum = add(a, b);
-	diff = sub(a, b);
-
-	print_num(sum);
-	print_num(diff);
+	print_num(cal(ADD, a, b));
 
 	return 0;
 }
