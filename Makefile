@@ -15,7 +15,10 @@ $(TARGET): $(OBJS)
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
-.PHONY: clean
+.PHONY: clean run
 clean:
 	@rm -rf $(OBJS) $(TARGET)
+
+run:
+	@./calc
 
