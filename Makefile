@@ -1,24 +1,28 @@
-TARGET	= calc
+TARGET		:= calc
+BUILDDIR	:= bin
+EXEC		:= $(addprefix $(BUILDDIR)/, $(TARGET))
 
-SUBDIR	=
+SRCS		:= $(wildcard *.c)
+OBJS		:= $(patsubst %.c, $(BUILDDIR)/%.o, $(SRCS))
 
-SRCS	= main.c
-OBJS	= $(patsubst %.c,%.o,$(SRCS))
+CC			= gcc
+CFLAGS		= -g -Wall
 
-CC		= gcc
-CFLAGS	= -g -Wall
+all : build $(EXEC)
 
-
-$(TARGET): $(OBJS)
+$(EXEC): $(OBJS)
 	$(CC) $(CFLAGS) $< -o $@
 
-%.o: %.c
+$(OBJS): $(SRCS)
 	$(CC) -c $(CFLAGS) $< -o $@
+
+build:
+	@mkdir -p $(BUILDDIR)
 
 .PHONY: clean run
 clean:
-	@rm -rf $(OBJS) $(TARGET)
+	@rm -rf $(BUILDDIR)
 
 run:
-	@./calc
+	@$(EXEC)
 
