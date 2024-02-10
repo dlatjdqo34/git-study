@@ -22,6 +22,13 @@ $(BUILDDIR)/%.o: %.c
 build:
 	@mkdir -p $(BUILDDIR)
 
+tags: tags-clean
+	find ${PWD}/ -name '*.[chsCHS]' | ctags -R -L-
+
+tags-clean:
+	rm -f tags
+
+
 .PHONY: clean run
 clean:
 	@rm -rf $(BUILDDIR)
